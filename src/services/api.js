@@ -1,0 +1,11 @@
+import axios from 'axios'
+export const api=axios.create({baseURL:import.meta.env.VITE_API_URL||'http://localhost:8000',timeout:30000})
+export const uploadSource=(formData)=>api.post('/api/upload/source',formData,{headers:{'Content-Type':'multipart/form-data'}})
+export const analyzeSource=(payload)=>api.post('/api/analyze',payload)
+export const getFacts=(payload)=>api.post('/api/facts',payload)
+export const transformProject=(payload)=>api.post('/api/transform',payload)
+export const checkConsistency=(payload)=>api.post('/api/consistency-check',payload)
+export const updateFactApi=(id,payload)=>api.put(`/api/facts/${id}`,payload)
+export const updateAll=(payload)=>api.post('/api/update-all',payload)
+export const listProjects=()=>api.get('/api/projects')
+export const openProject=(id)=>api.get(`/api/projects/${id}`)
